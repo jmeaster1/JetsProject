@@ -20,6 +20,14 @@ public class Jet {
 		this.pilot = pilot;
 	}
 	
+	public Jet(String model, Double speed, Double range, int capacity) {
+		super();
+		this.model = model;
+		this.speed = speed;
+		this.range = range;
+		this.capacity = capacity;
+	}
+	
 	public Double convertToMach() {
 		Double machSpeed = (speed/767.269148);
 		return machSpeed;
