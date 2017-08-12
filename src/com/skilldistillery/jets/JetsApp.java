@@ -25,9 +25,9 @@ public class JetsApp {
 				case 1: // listFleet();
 					System.out.println("do something");
 					break;
-				case 2: // showFastestJet();
+				case 2:  showFastestJet();
 					break;
-				case 3: // showMaxRangeJet();
+				case 3:  showMaxRangeJet();
 					break;
 				case 4:// addJet();
 					break;
@@ -62,21 +62,40 @@ public class JetsApp {
 		barracks.setPilots(pilots);
 
 	}
+
 	public void listFleet() {
-		
+
 	}
+
 	public void showFastestJet() {
-		Jet[] jets = hangar.getJets[];	
+		Jet[] jets = hangar.getJets();
+		Jet fastJet = jets[0];
+		for (int i = 0; i < jets.length; i++) {
+			if (fastJet.getSpeed() > jets[i].getSpeed()) {
+				fastJet = jets[i];
+			}
+
+		}
 	}
+
 	public void showMaxRangeJet() {
-		
+		Jet[] jets = hangar.getJets();
+		Jet maxRangeJet = jets[0];
+		for (int i = 0; i < jets.length; i++) {
+			if(maxRangeJet.getRange() > jets[i].getRange()) {
+				maxRangeJet = jets[i];
+			}
+			
+		}
+
 	}
+
 	public void addJet() {
-		
+
 	}
+
 	public void quit() {
-		
+
 	}
-	
 
 }
