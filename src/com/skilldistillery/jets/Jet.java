@@ -65,6 +65,12 @@ public class Jet {
 		this.pilot = pilot;
 	}
 
+	@Override
+	public String toString() {
+		return "Jet [model=" + model + ", speed=" + speed + ", range=" + range + ", capacity=" + capacity + ", pilot="
+				+ pilot + "]";
+	}
+
 	
 
 }

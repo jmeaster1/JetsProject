@@ -40,5 +40,10 @@ public class Pilot {
 	public void setExperience(int experience) {
 		this.experience = experience;
 	}
+
+	@Override
+	public String toString() {
+		return "Pilot [name=" + name + ", age=" + age + ", experience=" + experience + "]";
+	}
 	
 }

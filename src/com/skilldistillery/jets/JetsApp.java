@@ -13,6 +13,9 @@ public class JetsApp {
 	}
 
 	public void runApp() {
+		hangar = new Hangar();
+		barracks = new Barracks();
+		initializeHangarAndBarracks();
 		Scanner kb = new Scanner(System.in);
 		String choice;
 		int intChoice;
@@ -22,12 +25,14 @@ public class JetsApp {
 			try {
 				intChoice = Integer.parseInt(choice);
 				switch (intChoice) {
-				case 1: // listFleet();
-					System.out.println("do something");
+				case 1:
+					listFleet();
 					break;
-				case 2:  showFastestJet();
+				case 2:
+					showFastestJet();
 					break;
-				case 3:  showMaxRangeJet();
+				case 3:
+					showMaxRangeJet();
 					break;
 				case 4:// addJet();
 					break;
@@ -64,6 +69,10 @@ public class JetsApp {
 	}
 
 	public void listFleet() {
+		Jet[] jets = hangar.getJets();
+		for (int i = 0; i < jets.length; i++) {
+			System.out.println(jets[i]);
+		}
 
 	}
 
@@ -71,22 +80,23 @@ public class JetsApp {
 		Jet[] jets = hangar.getJets();
 		Jet fastJet = jets[0];
 		for (int i = 0; i < jets.length; i++) {
-			if (fastJet.getSpeed() > jets[i].getSpeed()) {
+			if (fastJet.getSpeed() < jets[i].getSpeed()) {//
 				fastJet = jets[i];
 			}
-
 		}
+		System.out.println(fastJet);
 	}
 
 	public void showMaxRangeJet() {
 		Jet[] jets = hangar.getJets();
 		Jet maxRangeJet = jets[0];
 		for (int i = 0; i < jets.length; i++) {
-			if(maxRangeJet.getRange() > jets[i].getRange()) {
+			if (maxRangeJet.getRange() < jets[i].getRange()) {
 				maxRangeJet = jets[i];
 			}
-			
+
 		}
+		System.out.println(maxRangeJet);
 
 	}
 
