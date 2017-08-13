@@ -19,8 +19,12 @@ public class JetsApp {
 		Scanner kb = new Scanner(System.in);
 		String choice;
 		int intChoice;
-		do {
-			System.out.println("Please enter your choice:");
+		do {//display menu
+			System.out.println("(1)List Fleet");
+			System.out.println("(2)View Fastest Jet");
+			System.out.println("(3)View Jet With Longest Range");
+			System.out.println("(4)Add A Jet To Fleet");
+			System.out.println("(5)Quit");
 			choice = kb.next();
 			try {
 				intChoice = Integer.parseInt(choice);
@@ -140,7 +144,9 @@ public class JetsApp {
 	}
 
 	public void addJet() {
-
+		//create a jet
+		//add fields based on user input
+		//user hangar object (which is in the field) to call addJet(jet) passing in the jet created
 	}
 
 	public void quit() {
