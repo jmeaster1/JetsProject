@@ -24,5 +24,17 @@ public class Hangar {
 		super();
 		this.jets = jets;
 	}
+	public void addJet(Jet newJet) {
+		Jet[] newJets = new Jet[jets.length + 1];
+		for (int i = 0; i < jets.length; i++) {
+			newJets[i] = jets[i];
+		}
+		newJets[newJets.length - 1] = newJet;
+		jets = newJets;
+			
+		
+		
+	
+	}
 	
 }

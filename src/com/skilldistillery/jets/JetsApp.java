@@ -7,26 +7,28 @@ public class JetsApp {
 	Hangar hangar;
 	Barracks barracks;
 
+	Scanner kb = new Scanner(System.in);
+	
 	public static void main(String[] args) {
 		JetsApp jetsApp = new JetsApp();
 		jetsApp.runApp();
 	}
 
-	public void runApp() {
+	public void runApp() {//sets user menu
 		hangar = new Hangar();
 		barracks = new Barracks();
 		initializeHangarAndBarracks();
-		Scanner kb = new Scanner(System.in);
 		String choice;
 		int intChoice;
-		do {//display menu
+		do {// display menu
 			System.out.println("(1)List Fleet");
 			System.out.println("(2)View Fastest Jet");
 			System.out.println("(3)View Jet With Longest Range");
 			System.out.println("(4)Add A Jet To Fleet");
 			System.out.println("(5)Quit");
+			System.out.println("Please choose a menu option.");
 			choice = kb.next();
-			try {
+			try {// switch statement to execute menu choice
 				intChoice = Integer.parseInt(choice);
 				switch (intChoice) {
 				case 1:
@@ -38,9 +40,10 @@ public class JetsApp {
 				case 3:
 					showMaxRangeJet();
 					break;
-				case 4:// addJet();
+				case 4: addJet(kb);
 					break;
-				case 5:// quit();
+				case 5:
+					quit();
 					break;
 				}
 			} catch (NumberFormatException e) {
@@ -51,7 +54,8 @@ public class JetsApp {
 
 	}
 
-	public void initializeHangarAndBarracks() {
+	public void initializeHangarAndBarracks() {// adds pilots to barracks and jets to hangar. Generates random pilot for
+												// each jet.
 
 		hangar = new Hangar();
 		Jet[] jets = new Jet[5];
@@ -63,46 +67,44 @@ public class JetsApp {
 		pilots[3] = new Pilot("Red Baron", 45, 20);
 		pilots[4] = new Pilot("Launchpad McQuack", 42, 30);
 
-
 		jets[0] = new Jet("C-130", 368.0, 2361.0, 60_000);
 		jets[1] = new Jet("C-17", 500.0, 6456.0, 181_054);
 		jets[2] = new Jet("C-5", 500.0, 7273.1, 240_000);
 		jets[3] = new Jet("KC-135", 580.0, 1503.0, 203_000);
 		jets[4] = new Jet("B-52", 644.0, 8800.0, 312_197);
-		
-		
-		//create new array to store yes (1) or no(0)
+
+		// create new array to store yes (1) or no(0)
 		int[] arr = new int[5];
-		
-		//iterate over array to store no(0) in each element spot
+
+		// iterate over array to store no(0) in each element spot
 		for (int i = 0; i < arr.length; i++) {
 			arr[i] = 0;
 		}
-		
-		//iterate over jets array to set pilots
+
+		// iterate over jets array to set pilots
 		for (int i = 0; i < jets.length; i++) {
-			
-			//declare new boolean to determine if we need to find another index
-			//because index may already be taken
+
+			// declare new boolean to determine if we need to find another index
+			// because index may already be taken
 			boolean keepSearching = true;
-			
-			//int to store the random index of the pilot in the pilot array
+
+			// int to store the random index of the pilot in the pilot array
 			int randomIndex;
 			do {
-				
-				//get random number between 0 and 4
+
+				// get random number between 0 and 4
 				randomIndex = (int) (Math.random() * 5);
-				
-				//check arr to see if that index (randomIndex) is NOT taken
-				//set keepSearching to false so the loop breaks
-				//set that index (randomIndex) to 1 to indicate that spot is now taken
+
+				// check arr to see if that index (randomIndex) is NOT taken
+				// set keepSearching to false so the loop breaks
+				// set that index (randomIndex) to 1 to indicate that spot is now taken
 				if (arr[randomIndex] == 0) {
 					keepSearching = false;
 					arr[randomIndex] = 1;
 				}
 			} while (keepSearching);
-			
-			//set pilot to jet using randomIndex
+
+			// set pilot to jet using randomIndex
 			jets[i].setPilot(pilots[randomIndex]);
 		}
 
@@ -111,7 +113,7 @@ public class JetsApp {
 
 	}
 
-	public void listFleet() {
+	public void listFleet() {// prints info for all jets in hangar
 		Jet[] jets = hangar.getJets();
 		for (int i = 0; i < jets.length; i++) {
 			System.out.println(jets[i]);
@@ -119,18 +121,19 @@ public class JetsApp {
 
 	}
 
-	public void showFastestJet() {
+	public void showFastestJet() {// displays fastest jet on fleet
 		Jet[] jets = hangar.getJets();
 		Jet fastJet = jets[0];
 		for (int i = 0; i < jets.length; i++) {
-			if (fastJet.getSpeed() < jets[i].getSpeed()) {
+			if (fastJet.convertToMach() < jets[i].convertToMach()) {
 				fastJet = jets[i];
 			}
 		}
 		System.out.println(fastJet);
+		
 	}
 
-	public void showMaxRangeJet() {
+	public void showMaxRangeJet() {// displays max range jet in hangar
 		Jet[] jets = hangar.getJets();
 		Jet maxRangeJet = jets[0];
 		for (int i = 0; i < jets.length; i++) {
@@ -143,13 +146,30 @@ public class JetsApp {
 
 	}
 
-	public void addJet() {
-		//create a jet
-		//add fields based on user input
-		//user hangar object (which is in the field) to call addJet(jet) passing in the jet created
+	public void addJet(Scanner kb) {//add custom jet to fleet
+		Jet newJet = new Jet();
+		System.out.println("Please enter the MODEL of your new jet.");
+		String newModel = kb.next();
+		newJet.setModel(newModel);
+		
+		System.out.println("Please enter the SPEED of your new jet in mph.");
+		double newSpeed = kb.nextDouble();
+		newJet.setSpeed(newSpeed);
+		
+		System.out.println("Please enter the RANGE of your new jet in miles.");
+		double newRange = kb.nextDouble();
+		newJet.setRange(newRange);
+		
+		System.out.println("Please enter the fuel CAPACITY of your new jet in pounds.");
+		double newCapacity = kb.nextDouble();
+		newJet.setCapacity(newCapacity);
+		
+		hangar.addJet(newJet);//new jet added to fleet
+		
 	}
 
-	public void quit() {
+	public void quit() {// quits application
+		System.out.println("Your session has ended");
 		System.exit(0);
 
 	}
