@@ -8,13 +8,13 @@ public class JetsApp {
 	Barracks barracks;
 
 	Scanner kb = new Scanner(System.in);
-	
+
 	public static void main(String[] args) {
 		JetsApp jetsApp = new JetsApp();
 		jetsApp.runApp();
 	}
 
-	public void runApp() {//sets user menu
+	public void runApp() {// sets user menu
 		hangar = new Hangar();
 		barracks = new Barracks();
 		initializeHangarAndBarracks();
@@ -24,8 +24,9 @@ public class JetsApp {
 			System.out.println("(1)List Fleet");
 			System.out.println("(2)View Fastest Jet");
 			System.out.println("(3)View Jet With Longest Range");
-			System.out.println("(4)Add A Jet To Fleet");
-			System.out.println("(5)Quit");
+			System.out.println("(4)Add A Custom Jet To Fleet");
+			System.out.println("(5)Add Custom Pilot");
+			System.out.println("(6)Quit");
 			System.out.println("Please choose a menu option.");
 			choice = kb.next();
 			try {// switch statement to execute menu choice
@@ -40,9 +41,13 @@ public class JetsApp {
 				case 3:
 					showMaxRangeJet();
 					break;
-				case 4: addJet(kb);
+				case 4:
+					addJet(kb);
 					break;
 				case 5:
+					addPilot(kb);
+					break;
+				case 6:
 					quit();
 					break;
 				}
@@ -50,7 +55,7 @@ public class JetsApp {
 				intChoice = 1;
 				System.out.println("Please enter an integer:");
 			}
-		} while (intChoice > 0 && intChoice < 5);
+		} while (intChoice > 0 && intChoice < 6);
 
 	}
 
@@ -130,7 +135,7 @@ public class JetsApp {
 			}
 		}
 		System.out.println(fastJet);
-		
+
 	}
 
 	public void showMaxRangeJet() {// displays max range jet in hangar
@@ -146,26 +151,43 @@ public class JetsApp {
 
 	}
 
-	public void addJet(Scanner kb) {//add custom jet to fleet
+	public void addJet(Scanner kb) {// add custom jet to fleet
 		Jet newJet = new Jet();
 		System.out.println("Please enter the MODEL of your new jet.");
 		String newModel = kb.next();
 		newJet.setModel(newModel);
-		
+
 		System.out.println("Please enter the SPEED of your new jet in mph.");
 		double newSpeed = kb.nextDouble();
 		newJet.setSpeed(newSpeed);
-		
+
 		System.out.println("Please enter the RANGE of your new jet in miles.");
 		double newRange = kb.nextDouble();
 		newJet.setRange(newRange);
-		
+
 		System.out.println("Please enter the fuel CAPACITY of your new jet in pounds.");
 		double newCapacity = kb.nextDouble();
 		newJet.setCapacity(newCapacity);
-		
-		hangar.addJet(newJet);//new jet added to fleet
-		
+
+		hangar.addJet(newJet);// new jet added to fleet
+
+	}
+
+	public void addPilot(Scanner kb) {// add custom pilot to barracks
+		Pilot newPilot = new Pilot();
+		System.out.println("Please enter the NAME of your new pilot.");
+		String newName = kb.next();
+		newPilot.setName(newName);
+
+		System.out.println("Please enter the AGE of your new pilot.");
+		int newAge = kb.nextInt();
+		newPilot.setAge(newAge);
+
+		System.out.println("Please enter the EXPERIENCE of your new pilot in years.");
+		int newExp = kb.nextInt();
+		newPilot.setExperience(newExp);
+
+		barracks.addPilot(newPilot);
 	}
 
 	public void quit() {// quits application

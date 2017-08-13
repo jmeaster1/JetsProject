@@ -20,5 +20,14 @@ public class Barracks {
 		super();
 		this.pilots = pilots;
 	}
-	
+
+	public void addPilot(Pilot newPilot) {
+		Pilot[] newPilots = new Pilot[pilots.length + 1];
+		for (int i = 0; i < pilots.length; i++) {
+			newPilots[i] = pilots[i];
+		}
+		newPilots[newPilots.length - 1] = newPilot;
+		pilots = newPilots;
+
+	}
 }
