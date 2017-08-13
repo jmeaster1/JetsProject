@@ -25,7 +25,7 @@ public class JetsApp {
 			System.out.println("(2)View Fastest Jet");
 			System.out.println("(3)View Jet With Longest Range");
 			System.out.println("(4)Add A Custom Jet To Fleet");
-			System.out.println("(5)Add Custom Pilot");
+			System.out.println("(5)Add Custom Pilot to Barracks");
 			System.out.println("(6)Quit");
 			System.out.println("Please choose a menu option.");
 			choice = kb.next();
@@ -123,9 +123,8 @@ public class JetsApp {
 		for (int i = 0; i < jets.length; i++) {
 			System.out.println(jets[i]);
 		}
-
 	}
-
+	
 	public void showFastestJet() {// displays fastest jet on fleet
 		Jet[] jets = hangar.getJets();
 		Jet fastJet = jets[0];
