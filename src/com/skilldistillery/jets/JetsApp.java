@@ -26,7 +26,8 @@ public class JetsApp {
 			System.out.println("(3)View Jet With Longest Range");
 			System.out.println("(4)Add A Custom Jet To Fleet");
 			System.out.println("(5)Add Custom Pilot to Barracks");
-			System.out.println("(6)Quit");
+			System.out.println("(6)Show Available Pilots");
+			System.out.println("(7)Quit");
 			System.out.println("Please choose a menu option.");
 			choice = kb.next();
 			try {// switch statement to execute menu choice
@@ -48,6 +49,9 @@ public class JetsApp {
 					addPilot(kb);
 					break;
 				case 6:
+					displayBarracks();
+					break;
+				case 7:
 					quit();
 					break;
 				}
@@ -55,7 +59,7 @@ public class JetsApp {
 				intChoice = 1;
 				System.out.println("Please enter an integer:");
 			}
-		} while (intChoice > 0 && intChoice < 6);
+		} while (intChoice > 0 && intChoice < 7);
 
 	}
 
@@ -123,8 +127,9 @@ public class JetsApp {
 		for (int i = 0; i < jets.length; i++) {
 			System.out.println(jets[i]);
 		}
+		System.out.println();
 	}
-	
+
 	public void showFastestJet() {// displays fastest jet on fleet
 		Jet[] jets = hangar.getJets();
 		Jet fastJet = jets[0];
@@ -175,7 +180,8 @@ public class JetsApp {
 	public void addPilot(Scanner kb) {// add custom pilot to barracks
 		Pilot newPilot = new Pilot();
 		System.out.println("Please enter the NAME of your new pilot.");
-		String newName = kb.next();
+		kb.nextLine();
+		String newName = kb.nextLine();
 		newPilot.setName(newName);
 
 		System.out.println("Please enter the AGE of your new pilot.");
@@ -192,7 +198,12 @@ public class JetsApp {
 	public void quit() {// quits application
 		System.out.println("Your session has ended");
 		System.exit(0);
-
 	}
 
+	public void displayBarracks() {//displays available pilots in barracks
+		for (int i = 0; i < barracks.getPilots().length; i++) {
+			System.out.println(barracks.getPilots()[i]);
+		}
+		System.out.println();
+	}
 }

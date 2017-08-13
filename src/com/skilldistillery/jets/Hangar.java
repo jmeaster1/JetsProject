@@ -9,7 +9,6 @@ public class Hangar {
 
 	public Hangar() {
 		jets = new Jet[5];
-		// TODO Auto-generated constructor stub
 	}
 
 	public Jet[] getJets() {

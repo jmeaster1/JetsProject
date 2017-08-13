@@ -5,7 +5,6 @@ public class Barracks {
 
 	public Barracks() {
 		pilots = new Pilot[5];
-		// TODO Auto-generated constructor stub
 	}
 
 	public Pilot[] getPilots() {
