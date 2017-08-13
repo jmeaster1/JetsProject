@@ -139,6 +139,7 @@ public class JetsApp {
 			}
 		}
 		System.out.println(fastJet);
+		System.out.println();
 
 	}
 
@@ -152,6 +153,7 @@ public class JetsApp {
 
 		}
 		System.out.println(maxRangeJet);
+		System.out.println();
 
 	}
 
