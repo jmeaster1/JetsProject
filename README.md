@@ -5,8 +5,6 @@
 * Inheritance
 * Arrays
 * UML
-* JUnit
-* TDD
 
 ## Description
 Jets

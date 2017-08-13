@@ -7,7 +7,6 @@ public class Pilot {
 	int experience;
 
 	public Pilot() {
-		// TODO Auto-generated constructor stub
 	}
 	
 	public Pilot(String name, int age, int experience) {
@@ -43,7 +42,7 @@ public class Pilot {
 
 	@Override
 	public String toString() {
-		return "Pilot [name=" + name + ", age=" + age + ", experience=" + experience + "]";
+		return "Pilot name: " + name + ", age: " + age + ", experience: " + experience + "]";
 	}
 	
 }

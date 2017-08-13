@@ -10,7 +10,6 @@ public class Jet {
 	Pilot pilot;
 
 	public Jet() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Jet(String model, Double speed, Double range, int capacity, Pilot pilot) {
@@ -77,8 +76,8 @@ public class Jet {
 
 	@Override
 	public String toString() {
-		return "Jet [model=" + model + ", speed (mach)=" + convertToMach() + ", range=" + range + ", capacity="
-				+ capacity + ", pilot=" + pilot + "]";
+		return "Jet model: " + model + ", speed (mach): " + convertToMach() + ", range (miles): " + range + ", fuel capacity(pounds): "
+				+ capacity + ", pilot: " + pilot;
 	}
 
 }
