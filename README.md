@@ -71,4 +71,6 @@ When option 4 is pressed you should be prompted to enter the model, speed (in MP
 
  When option 5 is pressed you should be prompted to enter the name, age, and experience of a custom pilot. This pilot should be added to the barracks.
 
-Option 6 should exit the program.
+ Option 6 will display all available pilots in the barracks.
+
+Option 7 should exit the program.
