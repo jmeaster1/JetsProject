@@ -13,7 +13,7 @@ public class JetsApp {
 		JetsApp jetsApp = new JetsApp();
 		jetsApp.runApp();
 	}
-
+	
 	public void runApp() {// sets user menu
 		hangar = new Hangar();
 		barracks = new Barracks();
